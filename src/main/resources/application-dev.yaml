@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: dart-scorer
+  datasource:
+    driver-class-name: org.h2.Driver
+    username: admin
+    password: password
+    url: jdbc:h2:mem:dart-scorer
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+  flyway:
+    enabled: true
+    default-schema: dart-scorer
+  h2:
+    console:
+      enabled: true
+server:
+  port: 9091
