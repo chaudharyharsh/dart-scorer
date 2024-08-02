@@ -12,7 +12,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController("/api/v1")
+@RestController
+@RequestMapping("api/v1")
 @Slf4j
 public class GameController {
 
@@ -22,20 +23,20 @@ public class GameController {
     @Autowired
     ApiResponse apiResponse;
 
-    @PostMapping("/game")
+    @PostMapping("/games")
     public ResponseEntity<Object> addGame(@RequestBody GameRequestDto gameRequestDto){
         log.debug("Enter addGame() in GameController.");
         GameResponseDto gameResponseDto = gameService.addGame(gameRequestDto);
         log.debug("Exit addGame() in GameController.");
-        return apiResponse.commonResponse(true, "New Game Successfully Added.",HttpStatus.OK,gameResponseDto);
+        return apiResponse.commonResponse(true, "New game successfully added.",HttpStatus.CREATED,gameResponseDto);
     }
 
-    @GetMapping("/games/{id}")
-    public ResponseEntity<Object> getGameById (@PathVariable (value = "id") Long id ){
+    @GetMapping("/games/{gameId}")
+    public ResponseEntity<Object> getGameById (@PathVariable (value = "gameId") Long gameId ){
         log.debug("Enter getGameById() in GameController");
-        GameResponseDto gameResponseDto = gameService.getGame(id);
+        GameResponseDto gameResponseDto = gameService.getGame(gameId);
         log.debug("Exit getGameById() in GameController");
-        return apiResponse.commonResponse(true, "Game with id "+ id + " Successfully Fetched.",HttpStatus.OK,gameResponseDto);
+        return apiResponse.commonResponse(true, "Game with id "+ gameId + " successfully fetched.",HttpStatus.OK,gameResponseDto);
     }
 
     @GetMapping("/games")
@@ -43,14 +44,22 @@ public class GameController {
         log.debug("Enter getAllGames() in GameController");
         List<GameResponseDto> gameResponseDto = gameService.getAllGames();
         log.debug("Exit getAllGames() in GameController");
-        return apiResponse.commonResponse(true, "Games Successfully Fetched.",HttpStatus.OK,gameResponseDto);
+        return apiResponse.commonResponse(true, "Games successfully fetched.",HttpStatus.OK,gameResponseDto);
     }
 
-    @DeleteMapping("/game/{id}")
-    public ResponseEntity<Object>  deleteGameById(@PathVariable (value = "id") Long id){
+    @PutMapping("/games")
+    public ResponseEntity<Object> update(@RequestBody GameRequestDto gameRequestDto){
+        log.debug("Enter update() in GameController.");
+        GameResponseDto gameResponseDto = gameService.updateGame(gameRequestDto);
+        log.debug("Exit update() in GameController.");
+        return apiResponse.commonResponse(true, "Game with id "+ gameRequestDto.getId() + " successfully updated.",HttpStatus.OK,gameResponseDto);
+    }
+
+    @DeleteMapping("/games/{gameId}")
+    public ResponseEntity<Object>  deleteGameById(@PathVariable (value = "gameId") Long gameId){
         log.debug("Enter getAllGames() in GameController");
-        gameService.deleteGame(id);
+        gameService.deleteGame(gameId);
         log.debug("Exit getAllGames() in GameController");
-        return apiResponse.commonResponse(true, "Game with id "+ id + " Successfully Deleted.",HttpStatus.OK,null);
+        return apiResponse.commonResponse(true, "Game with id "+ gameId + " successfully deleted.",HttpStatus.OK,null);
     }
 }

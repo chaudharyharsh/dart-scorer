@@ -5,14 +5,12 @@ import com.dart.scorer.dartscorer.entity.Score;
 import com.dart.scorer.dartscorer.entity.Team;
 import com.dart.scorer.dartscorer.enums.GameType;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Set;
 
 @Data
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class GameResponseDto {

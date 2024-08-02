@@ -6,8 +6,6 @@ import com.dart.scorer.dartscorer.entity.Game;
 import com.dart.scorer.dartscorer.mappers.GameModelMapper;
 import com.dart.scorer.dartscorer.repo.GameRepo;
 import com.dart.scorer.dartscorer.service.GameService;
-import jakarta.persistence.EntityNotFoundException;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -37,30 +35,31 @@ public class GameServiceImpl implements GameService {
     }
 
     @Override
-    public GameResponseDto addGame(GameRequestDto requestDto) {
-        Game game = this.gameModelMapper.gameRequestDtoToGame(requestDto);
+    public GameResponseDto addGame(GameRequestDto gameRequestDto) {
+        Game game = this.gameModelMapper.gameRequestDtoToGame(gameRequestDto);
         this.gameRepo.save(game);
-        GameResponseDto savedGame = this.gameModelMapper.gameToGameResponseDto(game);
-        return savedGame;
+        GameResponseDto gameResponseDto = this.gameModelMapper.gameToGameResponseDto(game);
+        return gameResponseDto;
     }
 
     @Override
-    public GameResponseDto updateGame(GameRequestDto requestDto) {
-        Optional<Game> game = this.gameRepo.findById(requestDto.getId());
+    public GameResponseDto updateGame(GameRequestDto gameRequestDto) {
+        Optional<Game> game = this.gameRepo.findById(gameRequestDto.getId());
         GameResponseDto gameResponseDto;
         Game existingGame;
         if (game.isPresent()) {
             existingGame = game.get();
-            existingGame.setType(requestDto.getType());
-            existingGame.setTeams(requestDto.getTeams());
-            existingGame.setCurrentRound(requestDto.getCurrentRound());
-            existingGame.setScore(requestDto.getScore());
-            existingGame.setWinnerPrize(requestDto.getWinnerPrize());
-            existingGame.setTotalRounds(requestDto.getTotalRounds());
-            existingGame.setChancesPerRound(requestDto.getChancesPerRound());
+            existingGame.setType(gameRequestDto.getType());
+            existingGame.setTeams(gameRequestDto.getTeams());
+            existingGame.setCurrentRound(gameRequestDto.getCurrentRound());
+            existingGame.setScore(gameRequestDto.getScore());
+            existingGame.setWinnerPrize(gameRequestDto.getWinnerPrize());
+            existingGame.setTotalRounds(gameRequestDto.getTotalRounds());
+            existingGame.setChancesPerRound(gameRequestDto.getChancesPerRound());
+            this.gameRepo.save(existingGame);
             gameResponseDto = this.gameModelMapper.gameToGameResponseDto(existingGame);
         } else {
-            throw new RuntimeException("Game not found with id :" + requestDto.getId());
+            throw new RuntimeException("Game not found with id :" + gameRequestDto.getId());
         }
         return gameResponseDto;
     }
@@ -68,19 +67,19 @@ public class GameServiceImpl implements GameService {
     @Override
     public List<GameResponseDto> getAllGames() {
         List<Game> games = this.gameRepo.findAll();
-        List<GameResponseDto> gameResponseDtos = games.stream().map(game -> {
+        List<GameResponseDto> gameResponseDtoList = games.stream().map(game -> {
             return this.gameModelMapper.gameToGameResponseDto(game);
         }).toList();
-        return gameResponseDtos;
+        return gameResponseDtoList;
     }
 
     @Override
-    public void deleteGame(Long id) {
-        Optional<Game> game = this.gameRepo.findById(id);
+    public void deleteGame(Long gameId) {
+        Optional<Game> game = this.gameRepo.findById(gameId);
         if (game.isPresent()) {
-            this.gameRepo.deleteById(id);
+            this.gameRepo.deleteById(gameId);
         } else {
-            throw new RuntimeException("Game not found with id :" + id);
+            throw new RuntimeException("Game not found with id :" + gameId);
         }
     }
 }
