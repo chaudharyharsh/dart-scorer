@@ -17,7 +17,6 @@ public class Game {
     private Long id;
 
     @Enumerated(EnumType.STRING)
-    @NotEmpty
     private GameType type;
 
     @OneToMany(mappedBy = "gameId")
@@ -32,9 +31,7 @@ public class Game {
     @Size(max = 50)
     private String winnerPrize;
 
-    @NotEmpty
     private Integer totalRounds;
 
-    @NotEmpty
     private Integer chancesPerRound;
 }

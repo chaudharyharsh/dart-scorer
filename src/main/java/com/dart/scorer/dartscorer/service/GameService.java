@@ -9,7 +9,7 @@ public interface GameService {
 
     GameResponseDto getGame(Long id);
     GameResponseDto addGame(GameRequestDto requestDto);
-    GameResponseDto updateGame(Long id,GameRequestDto requestDto);
+    GameResponseDto updateGame(GameRequestDto requestDto);
     List<GameResponseDto> getAllGames();
-
+    void deleteGame(Long id);
 }
