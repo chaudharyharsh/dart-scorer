@@ -17,5 +17,18 @@ spring:
   h2:
     console:
       enabled: true
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+      indent-output: true
+    default-property-inclusion: non_null
+  security:
+    user:
+      name: harsh
+      password: harsh
 server:
   port: 9091
+logging:
+  level:
+    org.hibernate.sql: debug
+    org.hibernate.type.descriptor.sql : trace

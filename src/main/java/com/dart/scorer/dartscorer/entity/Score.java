@@ -1,7 +1,6 @@
 package com.dart.scorer.dartscorer.entity;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotEmpty;
 import lombok.Data;
 
 import java.util.Set;
@@ -20,16 +19,13 @@ public class Score {
     inverseJoinColumns = @JoinColumn(name = "team_player_id"))
     private Set<TeamMember> teamPlayerId;
 
-    @NotEmpty
     @ManyToOne
     @JoinColumn(name = "game_id")
     private Game gameId;
 
-    @NotEmpty
     @ManyToOne
     @JoinColumn(name = "round_id")
     private Round round;
 
-    @NotEmpty
     private Integer points;
 }

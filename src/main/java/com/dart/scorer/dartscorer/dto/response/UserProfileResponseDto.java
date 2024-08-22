@@ -1,27 +1,20 @@
-package com.dart.scorer.dartscorer.entity;
+package com.dart.scorer.dartscorer.dto.response;
 
-import jakarta.persistence.*;
+import com.dart.scorer.dartscorer.entity.TeamMember;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
-@Entity
-public class UserProfile {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+@NoArgsConstructor
+@AllArgsConstructor
+public class UserProfileResponseDto {
     private Long id;
-
     private String firstName;
     private String lastName;
     private String email;
     private String userName;
     private String password;
-    private String role;
     private boolean isActive;
-
-    @Transient
-    @OneToOne
     private TeamMember teamMember;
-
-
 }

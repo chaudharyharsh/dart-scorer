@@ -2,7 +2,6 @@ package com.dart.scorer.dartscorer.entity;
 
 import com.dart.scorer.dartscorer.enums.GameType;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 
