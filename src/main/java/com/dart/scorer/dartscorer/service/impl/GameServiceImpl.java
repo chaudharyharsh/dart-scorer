@@ -50,9 +50,9 @@ public class GameServiceImpl implements GameService {
         if (game.isPresent()) {
             existingGame = game.get();
             existingGame.setType(gameRequestDto.getType());
-            existingGame.setTeams(gameRequestDto.getTeams());
-            existingGame.setCurrentRound(gameRequestDto.getCurrentRound());
-            existingGame.setScore(gameRequestDto.getScore());
+//            existingGame.setTeams(gameRequestDto.getTeams());
+//            existingGame.setCurrentRound(gameRequestDto.getCurrentRound());
+//            existingGame.setScore(gameRequestDto.getScore());
             existingGame.setWinnerPrize(gameRequestDto.getWinnerPrize());
             existingGame.setTotalRounds(gameRequestDto.getTotalRounds());
             existingGame.setChancesPerRound(gameRequestDto.getChancesPerRound());

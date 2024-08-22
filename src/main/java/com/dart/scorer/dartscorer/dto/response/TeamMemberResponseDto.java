@@ -1,9 +1,8 @@
 package com.dart.scorer.dartscorer.dto.response;
 
-import com.dart.scorer.dartscorer.entity.Round;
 import com.dart.scorer.dartscorer.entity.Score;
 import com.dart.scorer.dartscorer.entity.Team;
-import com.dart.scorer.dartscorer.enums.GameType;
+import com.dart.scorer.dartscorer.entity.UserProfile;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,12 +12,9 @@ import java.util.Set;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class GameResponseDto {
-
+public class TeamMemberResponseDto {
     private Long id;
-    private GameType type;
-    private String winnerPrize;
-    private Integer totalRounds;
-    private Integer chancesPerRound;
-
+    private UserProfile userId;
+    private Team teamId;
+    private Set<Score> score;
 }
