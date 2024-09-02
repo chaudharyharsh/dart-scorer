@@ -22,10 +22,10 @@ spring:
       write-dates-as-timestamps: false
       indent-output: true
     default-property-inclusion: non_null
-  security:
-    user:
-      name: harsh
-      password: harsh
+#  security:
+#    user:
+#      name: harsh
+#      password: harsh
 server:
   port: 9091
 logging:

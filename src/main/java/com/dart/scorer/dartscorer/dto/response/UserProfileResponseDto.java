@@ -15,6 +15,7 @@ public class UserProfileResponseDto {
     private String email;
     private String userName;
     private String password;
+    private String roles;
     private boolean isActive;
     private TeamMember teamMember;
 }
