@@ -22,6 +22,7 @@ public class UserProfileRequestDto {
     @JsonProperty(value = "user_name")
     private String userName;
     private String password;
+    private String roles;
 
     @JsonProperty(value = "is_active")
     private boolean isActive;

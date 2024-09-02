@@ -8,6 +8,7 @@ import com.dart.scorer.dartscorer.repo.UserProfileRepo;
 import com.dart.scorer.dartscorer.service.UserProfileService;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,9 +23,14 @@ public class UserProfileServiceImpl implements UserProfileService {
     @Autowired
     private UserProfileModelMapper userProfileModelMapper;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     @Override
     public UserProfileResponseDto addUserProfile(UserProfileRequestDto userProfileRequestDto) {
         UserProfile userProfile = this.userProfileModelMapper.userProfileRequestDtoToUserProfile(userProfileRequestDto);
+        userProfile.setPassword(passwordEncoder.encode(userProfileRequestDto.getPassword()));
+        userProfile.setRoles(userProfileRequestDto.getRoles().toUpperCase());
         this.userProfileRepo.save(userProfile);
         UserProfileResponseDto userProfileResponseDto = this.userProfileModelMapper.userProfileToUserProfileResponseDto(userProfile);
         return userProfileResponseDto;
@@ -63,7 +69,8 @@ public class UserProfileServiceImpl implements UserProfileService {
             userProfile.setEmail(userProfileRequestDto.getEmail());
             userProfile.setActive(userProfileRequestDto.isActive());
             userProfile.setUserName(userProfileRequestDto.getUserName());
-            userProfile.setPassword(userProfileRequestDto.getPassword());
+            userProfile.setPassword(passwordEncoder.encode(userProfileRequestDto.getPassword()));
+            userProfile.setRoles(userProfileRequestDto.getRoles().toUpperCase());
             this.userProfileRepo.save(userProfile);
             userProfileResponseDto = this.userProfileModelMapper.userProfileToUserProfileResponseDto(userProfile);
         }else {
