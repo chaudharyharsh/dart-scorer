@@ -1,7 +1,7 @@
 package com.dart.scorer.dartscorer.controller;
 
+import com.dart.scorer.dartscorer.dto.request.TeamMemberRequestDto;
 import com.dart.scorer.dartscorer.dto.response.TeamMemberResponseDto;
-import com.dart.scorer.dartscorer.dto.response.request.TeamMemberRequestDto;
 import com.dart.scorer.dartscorer.service.TeamMemberService;
 import com.dart.scorer.dartscorer.util.ApiResponse;
 import lombok.extern.slf4j.Slf4j;

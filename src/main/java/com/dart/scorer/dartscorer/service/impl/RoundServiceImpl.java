@@ -1,7 +1,7 @@
 package com.dart.scorer.dartscorer.service.impl;
 
+import com.dart.scorer.dartscorer.dto.request.RoundRequestDto;
 import com.dart.scorer.dartscorer.dto.response.RoundResponseDto;
-import com.dart.scorer.dartscorer.dto.response.request.RoundRequestDto;
 import com.dart.scorer.dartscorer.entity.Round;
 import com.dart.scorer.dartscorer.mappers.RoundModelMapper;
 import com.dart.scorer.dartscorer.repo.RoundRepo;

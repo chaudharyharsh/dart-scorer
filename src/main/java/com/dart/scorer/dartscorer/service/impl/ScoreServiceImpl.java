@@ -1,7 +1,7 @@
 package com.dart.scorer.dartscorer.service.impl;
 
+import com.dart.scorer.dartscorer.dto.request.ScoreRequestDto;
 import com.dart.scorer.dartscorer.dto.response.ScoreResponseDto;
-import com.dart.scorer.dartscorer.dto.response.request.ScoreRequestDto;
 import com.dart.scorer.dartscorer.entity.Score;
 import com.dart.scorer.dartscorer.mappers.ScoreModelMapper;
 import com.dart.scorer.dartscorer.repo.ScoreRepo;

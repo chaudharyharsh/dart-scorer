@@ -1,4 +1,4 @@
-package com.dart.scorer.dartscorer.dto.response.request;
+package com.dart.scorer.dartscorer.dto.request;
 
 import com.dart.scorer.dartscorer.entity.Game;
 import com.dart.scorer.dartscorer.entity.UserProfile;

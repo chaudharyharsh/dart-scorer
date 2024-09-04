@@ -1,7 +1,7 @@
 package com.dart.scorer.dartscorer.mappers;
 
+import com.dart.scorer.dartscorer.dto.request.UserProfileRequestDto;
 import com.dart.scorer.dartscorer.dto.response.UserProfileResponseDto;
-import com.dart.scorer.dartscorer.dto.response.request.UserProfileRequestDto;
 import com.dart.scorer.dartscorer.entity.UserProfile;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;

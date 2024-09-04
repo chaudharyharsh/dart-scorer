@@ -1,10 +1,9 @@
-package com.dart.scorer.dartscorer.dto.response.request;
+package com.dart.scorer.dartscorer.dto.request;
 
 import com.dart.scorer.dartscorer.entity.Game;
 import com.dart.scorer.dartscorer.entity.Round;
 import com.dart.scorer.dartscorer.entity.TeamMember;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

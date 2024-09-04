@@ -32,3 +32,12 @@ logging:
   level:
     org.hibernate.sql: debug
     org.hibernate.type.descriptor.sql : trace
+
+# security configuration
+jwt:
+  secret-key : dArT+fd$gDFDee475FGdvaDFde@$+ScoRer
+  token:
+    expiry-time : 1200000
+
+
+
