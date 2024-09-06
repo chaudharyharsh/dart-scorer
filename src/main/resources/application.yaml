@@ -3,15 +3,31 @@ spring:
     name: dart-scorer
   datasource:
     driver-class-name: org.postgresql.Driver
-    username: postgres
-    password: password
-    url: jdbc:postgresql://localhost:5432/postgres?currentSchema=dart-scorer
+    username: ${DB_USERNAME} #postgres
+    password: ${DB_PASSWORD} #password
+    url: ${DB_URL} #jdbc:postgresql://localhost:5432/postgres?currentSchema=dart-scorer
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: ${DDL_MODE}
   flyway:
     enabled: true
-    default-schema: dart-scorer
+    default-schema: ${DEFAULT_DB_SCHEMA}#dart-scorer
+  h2:
+    console:
+      enabled: true
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+      indent-output: true
+    default-property-inclusion: non_null
 server:
   port: 9091
+
+# security configuration
+jwt:
+  secret-key : ${SECRET_KEY}
+  token:
+    expiry-time : ${TOKEN_EXPIRATION_TIME}
+java:
+  home : ${JAVA_HOME}

@@ -1,14 +1,15 @@
 package com.dart.scorer.dartscorer.service;
 
+import com.dart.scorer.dartscorer.dto.request.UserProfileRequestDto;
 import com.dart.scorer.dartscorer.dto.response.UserProfileResponseDto;
-import com.dart.scorer.dartscorer.dto.response.request.UserProfileRequestDto;
 
 import java.util.List;
 
 public interface UserProfileService {
     UserProfileResponseDto addUserProfile(UserProfileRequestDto userProfileRequestDto);
-    UserProfileResponseDto getUserProfile(Long userProfileId);
+    UserProfileResponseDto addAdmin(UserProfileRequestDto userProfileRequestDto);
+    UserProfileResponseDto getUserProfile(String userName);
     List<UserProfileResponseDto> getUserProfiles();
     UserProfileResponseDto updateUserProfile(UserProfileRequestDto userProfileRequestDto);
-    void deleteUserProfile(Long userProfileId);
+    void deleteUserProfile(String userName);
 }

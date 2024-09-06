@@ -1,7 +1,7 @@
 package com.dart.scorer.dartscorer.service;
 
+import com.dart.scorer.dartscorer.dto.request.TeamRequestDto;
 import com.dart.scorer.dartscorer.dto.response.TeamResponseDto;
-import com.dart.scorer.dartscorer.dto.response.request.TeamRequestDto;
 
 import java.util.List;
 
